@@ -10,10 +10,24 @@ const App = () => {
   const positive = good * (100/total);
 
   //components
-  const Statistics = (props) => {
+  const StatisticLine = (props) => {
     return (
         <p>{props.name} = {props.value}</p>
       );
+  };
+
+  const Statistics = (props) => {
+    return (
+      <div className="stats--container">
+        <h1>Statistics</h1>
+          <StatisticLine name="Good" value={good} />
+          <StatisticLine name="Neutral" value={neutral} />
+          <StatisticLine name="Bad" value={bad} />
+          <StatisticLine name="Total" value={total} />
+          <StatisticLine name="Average" value={average} />
+          <StatisticLine name="Positive %" value={positive} />
+        </div>
+    );
   };
 
   const Button = (props) => {
@@ -40,23 +54,12 @@ const App = () => {
       return (<p>No feedback given</p>);
     } else {
       return (
-        <div className="stats--container">
-        <h1>Statistics</h1>
-          <Statistics name="Good" value={good} />
-          <Statistics name="Neutral" value={neutral} />
-          <Statistics name="Bad" value={bad} />
-          <Statistics name="Total" value={total} />
-          <Statistics name="Average" value={average} />
-          <Statistics name="Positive %" value={positive} />
-        </div>
+        <Statistics />
       );
-      
-    }
-    
+    }  
   }
 
   
-
   return (
     <div>
       <h1>Give Feedback</h1>
